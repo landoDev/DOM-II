@@ -1,9 +1,12 @@
-// Event count 4
+// Event count 6
 // ===== Event Logs
 window.addEventListener('load', (event) => {
     console.log('Welcome to the Console')
     console.log('Status: Page has loaded');
-  });
+});
+
+// transform h1
+
 // ===== nav hover using mouseover
 const navLinks = document.querySelectorAll(".nav-link")
 navLinks.forEach( element => {
@@ -49,3 +52,68 @@ destinationImg.addEventListener('dblclick', () => {
 });
 
 // ===== Click to change section title color
+const pageTitles = document.getElementsByTagName('h2')
+let titleArray = Array.from(pageTitles);
+titleArray.forEach(title => {
+    title.addEventListener('click', () => {
+        title.style.color = "#FFD700"
+    })
+})
+// ===== Hover for Destination background
+
+const destinationBox = document.querySelectorAll('.destination');
+destinationBox.forEach( box => {
+    box.addEventListener('mouseenter', () => {
+        box.style.backgroundColor = "#FFEBCD"
+    })
+    box.addEventListener('mouseleave', () => {
+        box.style.backgroundColor = ""
+    })
+})
+
+// ===== Text area to draw with mouse
+const drawTitle = document.createElement('h4')
+drawTitle.textContent = 'Draw an island here!'
+const titleParent = document.querySelector('.content-pick');
+titleParent.append(drawTitle)
+const drawBox = document.createElement('canvas')
+const drawParent = document.querySelector('.content-pick');
+drawParent.append(drawBox);
+let isDrawing = false;
+let x = 0;
+let y = 0;
+const context = drawBox.getContext('2d');
+const rect = drawBox.getBoundingClientRect();
+drawBox.addEventListener('mousedown', e => {
+  x = e.clientX - rect.left;
+  y = e.clientY - rect.top;
+  isDrawing = true;
+});
+
+drawBox.addEventListener('mousemove', e => {
+  if (isDrawing === true) {
+    drawLine(context, x, y, e.clientX - rect.left, e.clientY - rect.top);
+    x = e.clientX - rect.left;
+    y = e.clientY - rect.top;
+  }
+});
+
+window.addEventListener('mouseup', e => {
+  if (isDrawing === true) {
+    drawLine(context, x, y, e.clientX - rect.left, e.clientY - rect.top);
+    x = 0;
+    y = 0;
+    isDrawing = false;
+  }
+});
+
+function drawLine(context, x1, y1, x2, y2) {
+  context.beginPath();
+  context.strokeStyle = 'black';
+  context.lineWidth = 1;
+  context.moveTo(x1, y1);
+  context.lineTo(x2, y2);
+  context.stroke();
+  context.closePath();
+}
+// ===== Can't right click copright
