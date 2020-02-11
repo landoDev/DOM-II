@@ -14,8 +14,11 @@ navLinks.forEach( element => {
         element.style.color = '#FFD700'
         setTimeout(function() {
             element.style.color = "";
-          }, 500);
-        }, false);
+        }, 500);
+    }, false);
+    element.addEventListener('click', (event) => {
+        event.preventDefault();
+    })
 });
 
 // ===== Resized Header Photo
