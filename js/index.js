@@ -39,6 +39,23 @@ signUp.forEach( button => {
     button.style.transform = "scale(1)";
   })
 });
+// ===== Stop propagation of sections 
+const body = document.querySelector('body');
+
+body.addEventListener('click', () => {
+  body.style.backgroundColor="#17A2B8";
+})
+
+const sectionContent = document.querySelector(".content-section");
+sectionContent.addEventListener('click', () => {
+  sectionContent.style.backgroundColor = "khaki";
+})
+const contentText = document.querySelector(".text-content");
+contentText.addEventListener('click', (event) => {
+  contentText.style.backgroundColor="#C0C0C0";
+  event.stopPropagation();
+})
+
 
 // ===== Double click to change images
 let letsGoImg = pageImg[1];
@@ -73,6 +90,7 @@ destinationBox.forEach( box => {
         box.style.backgroundColor = ""
     })
 })
+
 
 // ===== Text area to draw with mouse
 const drawTitle = document.createElement('h4')
