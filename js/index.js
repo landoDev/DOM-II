@@ -52,7 +52,7 @@ sectionContent.addEventListener('click', () => {
 })
 const contentText = document.querySelector(".text-content");
 contentText.addEventListener('click', (event) => {
-  contentText.style.backgroundColor="#C0C0C0";
+  contentText. style.backgroundColor="#C0C0C0";
   event.stopPropagation();
 })
 
@@ -91,6 +91,19 @@ destinationBox.forEach( box => {
     })
 })
 
+
+const destinationContent = document.querySelectorAll(".destination p");
+destinationContent.forEach((p) => {
+    p.addEventListener('click', (event) => {
+    p.style.backgroundColor = "red";
+    event.stopPropagation();
+    })
+})
+// const contentText = document.querySelector(".text-content");
+// contentText.addEventListener('click', (event) => {
+//   contentText. style.backgroundColor="#C0C0C0";
+//   event.stopPropagation();
+// })
 
 // ===== Text area to draw with mouse
 const drawTitle = document.createElement('h4')
